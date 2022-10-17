@@ -1,0 +1,6 @@
+# Built container
+*.sif
+*.simg
+*.img
+# Except folders?
+# !folder.img
