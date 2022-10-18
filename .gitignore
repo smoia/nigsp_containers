@@ -2,5 +2,8 @@
 *.sif
 *.simg
 *.img
+
+# tmp fodlers
+*.tmp/*
 # Except folders?
 # !folder.img
