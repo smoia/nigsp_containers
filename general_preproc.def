@@ -96,6 +96,7 @@ apt install -y -q --no-install-recommends \
     tcsh \
     python3-distutils \
     python3-pip \
+    python3-rpy2 \
     python-is-python3 \
     qhull-bin \
     xvfb \
@@ -125,12 +126,12 @@ cd ${TMPDIR}/mrtrix3 || exit 1
 git fetch --tags
 git -c advice.detachedHead=false checkout 3.0.3
 ./configure -nogui
-./build
+NUMBER_OF_PROCESSORS=4 ./build
 mv bin lib share /opt/mrtrix3-3.0.2/.
 cd ${TMPDIR} || exit 1
 rm -rf ${TMPDIR}/mrtrix3
 # Install PYTHON things, mainly NIGSP!
-pip3 install nigsp[all] rpy2
+pip3 install nigsp[all]
 # Install AFNI
 mkdir -p ${TMPDIR}/afni
 # apt install python3-wxgtk4.0
