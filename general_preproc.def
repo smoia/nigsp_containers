@@ -101,16 +101,8 @@ apt install -y -q --no-install-recommends \
     qhull-bin \
     xvfb \
     zlib1g-dev
-    # libqt5core5a \
-    # libqt5gui5 \
-    # libqt5network5 \
-    # libqt5opengl5-dev \
-    # libqt5svg5-dev \
-    # libqt5widgets5 \
-# dpkg --add-architecture i386
 # Install AFNI
 mkdir -p ${TMPDIR}/afni
-# apt install python3-wxgtk4.0
 ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.23 /usr/lib/x86_64-linux-gnu/libgsl.so.19
 cd ${TMPDIR}/afni || exit 1
 curl -O https://afni.nimh.nih.gov/pub/dist/bin/misc/@update.afni.binaries
@@ -161,7 +153,39 @@ mv bin lib share /opt/mrtrix3-3.0.2/.
 cd ${TMPDIR} || exit 1
 rm -rf ${TMPDIR}/mrtrix3
 # Install PYTHON things, mainly NIGSP!
-pip3 install nigsp[all]
+pip3 install \
+    certifi==2022.9.24 \
+    charset-normalizer==2.1.1 \
+    citeproc-py==0.6.0 \
+    contourpy==1.0.5 \
+    cycler==0.11.0 \
+    duecredit==0.9.1 \
+    fonttools==4.37.4 \
+    future==0.18.2 \
+    h5py==3.7.0 \
+    idna==3.4 \
+    joblib==1.2.0 \
+    kiwisolver==1.4.4 \
+    lxml==4.9.1 \
+    matplotlib==3.6.1 \
+    nibabel==4.0.2 \
+    nilearn==0.9.2 \
+    numpy==1.22.4 \
+    packaging==21.3 \
+    pandas==1.5.0 \
+    Pillow==9.2.0 \
+    pymatreader==0.0.30 \
+    pyparsing==3.0.9 \
+    python-dateutil==2.8.2 \
+    pytz==2022.5 \
+    requests==2.28.1 \
+    scikit-learn==1.1.2 \
+    scipy==1.9.2 \
+    six==1.16.0 \
+    threadpoolctl==3.1.0 \
+    urllib3==1.26.12 \
+    xmltodict==0.13.0 \
+    nigsp[all]
 # Final removal of lists and cleanup
 cd /tmp || exit 1
 rm -rf ${TMPDIR}
