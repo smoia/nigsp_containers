@@ -108,30 +108,6 @@ apt install -y -q --no-install-recommends \
     # libqt5svg5-dev \
     # libqt5widgets5 \
 # dpkg --add-architecture i386
-# Install FSL
-mkdir -p ${TMPDIR}/fsl
-cd ${TMPDIR}/fsl || exit 1
-curl -fL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py --output ./fslinstaller.py
-chmod +x fslinstaller.py
-python3 fslinstaller.py -d /opt/fsl-6.0.5.2 -V 6.0.5.2
-# echo "Installing FSL conda environment ..."
-# bash /opt/fsl-6.0.5.2/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.5.2
-cd ${TMPDIR} || exit 1
-rm -rf ${TMPDIR}/fsl
-# Install MRtrix3
-echo "Downloading MRtrix3 ..."
-mkdir -p /opt/mrtrix3-3.0.2
-git clone https://github.com/MRtrix3/mrtrix3.git ${TMPDIR}/mrtrix3
-cd ${TMPDIR}/mrtrix3 || exit 1
-git fetch --tags
-git -c advice.detachedHead=false checkout 3.0.3
-./configure -nogui
-NUMBER_OF_PROCESSORS=4 ./build
-mv bin lib share /opt/mrtrix3-3.0.2/.
-cd ${TMPDIR} || exit 1
-rm -rf ${TMPDIR}/mrtrix3
-# Install PYTHON things, mainly NIGSP!
-pip3 install nigsp[all]
 # Install AFNI
 mkdir -p ${TMPDIR}/afni
 # apt install python3-wxgtk4.0
@@ -162,6 +138,30 @@ echo "Downloading Convert3D ..."
 mkdir -p /opt/convert3d-1.0.0
 curl -fsSL https://sourceforge.net/projects/c3d/files/c3d/1.0.0/c3d-1.0.0-Linux-x86_64.tar.gz/download \
 | tar -xz -C /opt/convert3d-1.0.0 --strip-components 1
+# Install FSL
+mkdir -p ${TMPDIR}/fsl
+cd ${TMPDIR}/fsl || exit 1
+curl -fL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py --output ./fslinstaller.py
+chmod +x fslinstaller.py
+python3 fslinstaller.py -d /opt/fsl-6.0.5.2 -V 6.0.5.2
+# echo "Installing FSL conda environment ..."
+# bash /opt/fsl-6.0.5.2/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.5.2
+cd ${TMPDIR} || exit 1
+rm -rf ${TMPDIR}/fsl
+# Install MRtrix3
+echo "Downloading MRtrix3 ..."
+mkdir -p /opt/mrtrix3-3.0.2
+git clone https://github.com/MRtrix3/mrtrix3.git ${TMPDIR}/mrtrix3
+cd ${TMPDIR}/mrtrix3 || exit 1
+git fetch --tags
+git -c advice.detachedHead=false checkout 3.0.3
+./configure -nogui
+NUMBER_OF_PROCESSORS=4 ./build
+mv bin lib share /opt/mrtrix3-3.0.2/.
+cd ${TMPDIR} || exit 1
+rm -rf ${TMPDIR}/mrtrix3
+# Install PYTHON things, mainly NIGSP!
+pip3 install nigsp[all]
 # Final removal of lists and cleanup
 cd /tmp || exit 1
 rm -rf ${TMPDIR}
