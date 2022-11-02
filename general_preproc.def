@@ -56,31 +56,41 @@ apt install -y -q --no-install-recommends \
     gcc \
     git \
     less \
+    libcurl4-openssl-dev \
     libeigen3-dev \
     libf2c2-dev \
     libfftw3-3 \
     libfftw3-dev \
+    libgdal-dev \
+    libgfortran4 \
+    libgfortran-8-dev \
     libglew-dev \
     libgl1-mesa-dev \
     libgl1-mesa-dri \
     libgl1-mesa-glx \
     libglib2.0-dev \
     libglu1-mesa-dev \
+    libglw1-mesa \
     libgomp1 \
     libgsl-dev \
     libgts-dev \
     libjpeg8-dev \
     liblapack3 \
+    libopenblas-dev \
     libmotif-dev \
     libnetpbm10-dev \
+    libnode-dev \
     libpng16-16 \
     libpng-dev \
     libquadmath0 \
     libtiff5 \
     libtiff5-dev \
+    libudunits2-dev \
     libxext-dev \
     libxi-dev \
+    libxm4 \
     libxmhtml-dev \
+    libxml2-dev \
     libxmu-dev \
     libxmu-headers \
     libxpm-dev \
