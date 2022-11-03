@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%environment
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Europe/Brussels
+
+%post
+# Set install variables, create tmp folder
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Europe/Brussels
+apt update -qq
+# Prepare repos and install dependencies
+apt install -y -q \
+    bc \
+    bzip2 \
+    curl \
+    dc \
+    less \
+    nano \
+    rsync \
+    python3-distutils \
+    python3-pip \
+    python-is-python3
+# Install PYTHON things, mainly NIGSP!
+pip3 install nigsp[all] ipython
+# Final removal of lists and cleanup
+rm -rf /var/lib/apt/lists/*
